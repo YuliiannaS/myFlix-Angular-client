@@ -13,11 +13,16 @@ import { UserLoginFormComponent } from './user-login-form/user-login-form.compon
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { MovieCardComponent } from './movie-card/movie-card.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { GenreDialogComponent } from './genre-dialog/genre-dialog.component';
+import { DirectorDialogComponent } from './director-dialog/director-dialog.component';
+import { DetailsDialogComponent } from './details-dialog/details-dialog.component';
 
 const appRoutes: Routes = [
+  { path: 'profile', component: ProfilePageComponent },
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
@@ -30,6 +35,10 @@ const appRoutes: Routes = [
     UserLoginFormComponent,
     MovieCardComponent,
     WelcomePageComponent,
+    ProfilePageComponent,
+    GenreDialogComponent,
+    DirectorDialogComponent,
+    DetailsDialogComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

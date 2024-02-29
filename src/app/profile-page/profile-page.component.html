@@ -1,0 +1,26 @@
+<div class="container">
+    <h2>Favorited Movies</h2>
+    <div *ngIf="favoritedMovies.length > 0; else noMovies">
+        <div *ngFor="let movie of favoritedMovies">
+            <h3>{{ movie.title }}</h3>
+            <!-- Display additional movie details as needed -->
+        </div>
+    </div>
+    <ng-template #noMovies>
+        <p>No favorited movies found.</p>
+    </ng-template>
+</div>
+<div class="profile-container">
+    <div *ngIf="user">
+        <h2>Welcome, {{ user.email }}</h2>
+        <form (ngSubmit)="onSubmit()">
+      
+          <!-- Email input -->
+          <label for="username">New username:</label>
+          <input type="username" id="username" name="username" [(ngModel)]="user.username" required>
+      
+          <button type="submit">Save Changes</button>
+        </form>
+      </div>
+      
+</div>
