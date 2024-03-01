@@ -1,0 +1,10 @@
+{
+    "out": "docs",
+    "includeVersion": true,
+    "exclude": ["node_modules", "dist", "tmp"],
+    "excludeExternals": true,
+    "excludePrivate": true,
+    "excludeProtected": true,
+    "entryPointStrategy": "expand"
+  }
+  

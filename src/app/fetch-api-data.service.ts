@@ -8,6 +8,9 @@ const apiUrl = 'https://fathomless-coast-10170-8a6e0563517f.herokuapp.com/';
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'user';
 
+/**
+ * Service for interacting with the API endpoints.
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -17,14 +20,22 @@ export class ApiService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  // User Registration
+  /**
+   * Registers a new user.
+   * @param userDetails The user details to register.
+   * @returns An observable with the registration response.
+   */
   userRegistration(userDetails: any): Observable<any> {
     return this.http.post(apiUrl + 'users', userDetails).pipe(
       catchError(this.handleError)
     );
   }
 
-  // User Login
+  /**
+   * Logs in a user.
+   * @param credentials The user credentials to log in.
+   * @returns An observable with the login response.
+   */
   userLogin(credentials: any): Observable<any> {
     return this.http.post(apiUrl + 'login', credentials).pipe(
       catchError(this.handleError),
@@ -40,40 +51,61 @@ export class ApiService {
     );
   }
 
-  // Get all movies
+  /**
+   * Retrieves all movies from the API.
+   * @returns An observable with the list of movies.
+   */
   getAllMovies(): Observable<any> {
     return this.http.get(apiUrl + 'movies', this.getHeaders()).pipe(
       catchError(this.handleError)
     );
   }
 
-  // Get one movie
+  /**
+   * Retrieves the favorite movies of the logged-in user.
+   * @returns An observable with the list of favorite movies.
+   */
   getMovie(movieName: string): Observable<any> {
     return this.http.get(apiUrl + `movies/${movieName}`, this.getHeaders()).pipe(
       catchError(this.handleError)
     );
   }
 
-  // Get director
+  /**
+   * Retrieves details of a director by their name.
+   * @param directorName The name of the director.
+   * @returns An observable with the director details.
+   */
   getDirector(directorName: string): Observable<any> {
     return this.http.get(apiUrl + `movies/directors/${directorName}`, this.getHeaders()).pipe(
       catchError(this.handleError)
     );
   }
 
-  // Get genre
+  /**
+   * Retrieves details of a genre by its name.
+   * @param genreName The name of the genre.
+   * @returns An observable with the genre details.
+   */
   getGenre(genreName: string): Observable<any> {
     return this.http.get(apiUrl + `movies/genres/${genreName}`, this.getHeaders()).pipe(
       catchError(this.handleError)
     );
   }
 
-  // Get user
+  /**
+   * Retrieves the logged-in user's details.
+   * @returns An observable with the user details.
+   */
   getUser(): Observable<any> {
     return this.user;
   }
 
-  // Add a movie to favorite Movies
+  /**
+   * Adds a movie to the user's list of favorite movies.
+   * @param movieName The name of the movie to add to favorites.
+   * @returns An observable indicating success or failure.
+   */
   addToFavorites(movieName: string): Observable<any> {
     return this.http.post(apiUrl + `users/${this.user.email}/${movieName}`, {}, this.getHeaders()).pipe(
       catchError(error => {
@@ -94,21 +126,32 @@ export class ApiService {
     );
   }
   
-  // Edit user
+  /**
+   * Updates the user's details.
+   * @param userData The updated user data.
+   * @returns An observable indicating success or failure.
+   */
   editUser(userData: any): Observable<any> {
     return this.http.put(apiUrl + `users/${this.user.email}`, userData, this.getHeaders()).pipe(
       catchError(this.handleError)
     );
   }
 
-  // Delete user
+  /**
+   * Deletes the user account.
+   * @returns An observable indicating success or failure.
+   */
   deleteUser(): Observable<any> {
     return this.http.delete(apiUrl + `users/${this.user.email}`, this.getHeaders()).pipe(
       catchError(this.handleError)
     );
   }
 
-  // Delete a movie from the favorite movies
+  /**
+   * Removes a movie from the user's list of favorite movies.
+   * @param movieName The name of the movie to remove from favorites.
+   * @returns An observable indicating success or failure.
+   */
   deleteFavoriteMovie(movieName: string): Observable<any> {
     return this.http.delete(apiUrl + `users/${this.user.email}/${movieName}`, this.getHeaders()).pipe(
       catchError(error => {
@@ -133,6 +176,10 @@ export class ApiService {
     );
   }
 
+  /**
+   * Retrieves the user's list of favorite movies.
+   * @returns An observable with the list of favorite movies.
+   */
   getUserFavoriteMovies(): Observable<any[]> {
     // Check if user is logged in
     if (!this.token) {
@@ -162,6 +209,11 @@ export class ApiService {
     return { headers };
   }
 
+  /**
+   * Handles HTTP error responses.
+   * @param error The HTTP error response.
+   * @returns An observable with the error handling logic.
+   */
   private handleError(error: HttpErrorResponse): any {
     if (error.status === 401) {
       localStorage.removeItem(TOKEN_KEY);

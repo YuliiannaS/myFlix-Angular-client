@@ -1,27 +1,38 @@
-# MyFlixAngularClient
+# myFlix angular client
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.1.
+This project is a frontend client for a movie database built using Angular and Angular Material. It serves as a user-friendly interface for browsing, searching, and interacting with movie data. Leveraging Angular's robust framework and Material Design components, the client offers a modern and intuitive user experience.
 
-## Development server
+## Introduction
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+[Provide a brief introduction to your project. Describe what it does and its purpose.]
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+[List the key features of your project.]
 
-## Build
+- *Browse Movies:* Users can browse through a vast collection of movies, view details, and explore related information such as directors, genres, and synopsis.
+- *User Authentication:* Users can register, log in, and manage their profiles. Authentication mechanisms ensure secure access to user-specific features such as favoriting movies.
+- *Favorite Movies:* Authenticated users can mark movies as favorites, enabling them to easily access and manage their preferred selections.
+- *Responsive Design:* The client is designed to be responsive, ensuring optimal viewing experiences across various devices and screen sizes.
+- *User Profile Management:* Users can update their profile information, including email and password, through an intuitive interface.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Technologies Used:
 
-## Running unit tests
+- Angular: The project is developed using Angular, a popular TypeScript-based framework for building web applications.
+- Angular Material: Angular Material provides a set of pre-built UI components that follow the Material Design guidelines, facilitating the creation of visually appealing and consistent interfaces.
+- RxJS: The Reactive Extensions for JavaScript (RxJS) library is utilized for handling asynchronous operations and managing data streams, enabling efficient data handling and state management.
+- HTTP Client: Angular's built-in HTTP client module is used to communicate with backend APIs, facilitating data retrieval and interaction with the movie database.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Installation
 
-## Running end-to-end tests
+[Provide instructions on how to install your project and its dependencies.]
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+npm install
+```
 
-## Further help
+## Usage
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+npm start
+```
